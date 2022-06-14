@@ -14,8 +14,6 @@ public class Client {
         try (Socket socket = new Socket(host, port);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-            out.println();
-            System.out.println(in.readLine());
             out.println(scanner.nextLine());
             System.out.println(in.readLine());
         } catch (UnknownHostException e) {

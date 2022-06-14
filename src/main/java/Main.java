@@ -12,11 +12,7 @@ public class Main {
                 try (Socket socket = serverSocket.accept();
                      PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-                    System.out.println("Новое подключение");
-                    in.readLine();
-                    out.println("Введите слово для поиска");
-                    final String word = in.readLine();
-                    out.println(engine.listToJson(engine.search(word)));
+                    out.println(engine.listToJson(engine.search(in.readLine())));
                 } catch (IOException e) {
                     System.out.println("Не могу стартовать сервер");
                     e.printStackTrace();
